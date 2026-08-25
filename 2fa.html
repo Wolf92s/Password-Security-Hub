@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2FA Methods - Password Security Hub</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- PWA Manifest and Theme Color -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+
+    <!-- Tailwind CSS for styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Header and Navigation -->
+        <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+            <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='index.html'">
+                        <img class="h-8 w-auto" src="https://placehold.co/128x128/4F46E5/FFFFFF?text=PSH" alt="Password Security Hub Logo">
+                        <span class="text-xl font-bold text-white ml-3">PasswordSecurityHub</span>
+                    </div>
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex items-baseline space-x-4">
+                        <a href="index.html" id="nav-home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Home</a>
+                        <a href="generator.html" id="nav-generator" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Generator</a>
+                        <a href="passkeys.html" id="nav-passkeys" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Passkeys</a>
+                        <a href="2fa.html" id="nav-2fa" class="nav-link active px-3 py-2 rounded-md text-sm font-medium text-gray-300">2FA Methods</a>
+                        <a href="managers.html" id="nav-managers" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Password Managers</a>
+                        <a href="support.html" id="nav-support" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Support Us</a>
+                        <a href="contact.html" id="nav-contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Contact</a>
+                    </div>
+                    <!-- Hamburger Button -->
+                    <div class="lg:hidden">
+                        <button id="hamburger-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                            <span class="sr-only">Open main menu</span>
+                            <svg id="hamburger-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg id="hamburger-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="lg:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" id="mobile-nav-home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Home</a>
+                    <a href="generator.html" id="mobile-nav-generator" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Generator</a>
+                    <a href="passkeys.html" id="mobile-nav-passkeys" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Passkeys</a>
+                    <a href="2fa.html" id="mobile-nav-2fa" class="nav-link active block px-3 py-2 rounded-md text-base font-medium text-gray-300">2FA Methods</a>
+                    <a href="managers.html" id="mobile-nav-managers" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Password Managers</a>
+                    <a href="support.html" id="mobile-nav-support" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Support Us</a>
+                    <a href="contact.html" id="mobile-nav-contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Contact</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-xl space-y-6">
+                    <h2 class="text-3xl font-bold text-indigo-400">Comparing 2FA Methods</h2>
+                    <p class="text-gray-300">Two-Factor Authentication (2FA) adds a crucial second layer of security to your accounts. Here's a breakdown of the most common methods, along with their pros and cons.</p>
+
+                    <div class="bg-gray-900/50 p-6 rounded-lg">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Hardware Security Keys</h3>
+                        <p class="mb-4 text-sm text-gray-400">Physical devices that plug into your computer or connect via NFC to verify your identity. This is the most secure form of 2FA available.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Highest level of security</li><li>Resistant to phishing and man-in-the-middle attacks</li><li>Easy to use (just tap a button)</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Costs money to purchase</li><li>Can be lost or damaged</li><li>Requires carrying a physical device</li><li>Not yet supported by all services</li></ul></div>
+                        </div>
+                        <div class="mt-4 border-t border-gray-700 pt-4">
+                            <h4 class="font-semibold text-gray-300 mb-2">Popular Options:</h4>
+                            <div class="text-sm space-y-1">
+                                <a href="https://www.yubico.com/products/" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">YubiKey by Yubico</a><br>
+                                <a href="https://store.google.com/product/titan_security_key" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Google Titan Security Key</a><br>
+                                <a href="https://solokeys.com/" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">SoloKeys (Open Source)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900/50 p-6 rounded-lg">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Authenticator Apps</h3>
+                        <p class="mb-4 text-sm text-gray-400">Apps on your phone that generate time-based one-time passcodes (TOTP). A great balance of security and convenience.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Very secure, not tied to phone number</li><li>Works offline</li><li>Free to use</li><li>Widely supported</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Requires a separate device (your phone)</li><li>Can be inconvenient if phone is lost/broken</li><li>Slightly vulnerable to sophisticated phishing</li></ul></div>
+                        </div>
+                        <div class="mt-4 border-t border-gray-700 pt-4">
+                            <h4 class="font-semibold text-gray-300 mb-2">Popular Options:</h4>
+                            <div class="text-sm space-y-1">
+                                <a href="https://proton.me/authenticator" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Proton Authenticator (Privacy-focused)</a><br>
+                                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Google Authenticator</a><br>
+                                <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Microsoft Authenticator</a><br>
+                                <a href="https://getaegis.app/" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Aegis Authenticator (Android, Open Source)</a><br>
+                                <a href="https://authy.com/" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Authy (Cloud Sync)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900/50 p-6 rounded-lg border-l-4 border-indigo-500">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">SIM-Based Cryptographic Auth (MagicalAuth®)</h3>
+                        <p class="mb-4 text-sm text-gray-400">A next-generation 2FA approach by <a href="https://glide.id" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">Glide.id</a> that replaces traditional SMS codes with cryptographic verification anchored to your SIM card. Instead of sending an interceptable text message, the platform verifies your identity directly with your mobile carrier at the network level — often invisibly in the background.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <h4 class="font-bold text-green-400 mb-1">Pros</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Immune to SIM-swapping, OTP interception, and phishing attacks</li>
+                                    <li>Zero-friction experience — verification happens in the background with no codes to enter</li>
+                                    <li>Works over Wi-Fi, mobile data, or ethernet (not dependent on cellular signal)</li>
+                                    <li>Extremely fast — completes in a single API call, no waiting for SMS delivery</li>
+                                    <li>Also offers SuperPasskey® which combines SIM verification with FIDO2/WebAuthn and biometrics</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-red-400 mb-1">Cons</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li><strong class="text-white">Carrier support is limited:</strong> Currently only works with AT&T, T-Mobile, and Verizon in the U.S. — if your carrier is not supported, it simply won't work</li>
+                                    <li>Many MVNOs (smaller/virtual carriers) and prepaid plans are not yet supported</li>
+                                    <li>Relatively new technology — not yet widely adopted by websites and services</li>
+                                    <li>Requires the app/service you're logging into to have integrated Glide's SDK</li>
+                                    <li>Still dependent on having a mobile device with an active SIM</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 border-t border-gray-700 pt-4">
+                            <h4 class="font-semibold text-gray-300 mb-2">Learn More:</h4>
+                            <div class="text-sm space-y-1">
+                                <a href="https://glide.id" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Glide.id — MagicalAuth® Platform</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900/50 p-6 rounded-lg border-l-4 border-red-500">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">SMS / Text Message Codes</h3>
+                        <p class="mb-4 text-sm text-gray-400">Receiving a code via text message to your phone. While better than nothing, this is one of the least secure 2FA methods.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <h4 class="font-bold text-green-400 mb-1">Pros</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Extremely convenient</li>
+                                    <li>Familiar to most users</li>
+                                    <li>Doesn't require a smartphone app</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-red-400 mb-1">Cons</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Vulnerable to SIM-swapping attacks</li>
+                                    <li>Codes can be intercepted</li>
+                                    <li>Relies on cellular service</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 border-t border-gray-700 py-8">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex justify-center space-x-6 mb-4 text-sm text-gray-400">
+                    <a href="tos.html" class="hover:text-white">Terms of Service</a>
+                </div>
+                <p class="text-xs text-gray-500 max-w-2xl mx-auto mb-2">Data & Privacy Notice: This website does not deploy marketing scripts, tracking pixels, or advertising cookies of any kind. We utilize Cloudflare solely for anonymized traffic metrics and bot-network defense, ensuring no personal identifiable information or browsing histories are collected or stored on this domain.</p>
+                <p class="text-xs text-gray-500">&copy; 2026 Password Security Hub. Deterministically Secure.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="shared.js"></script>
+</body>
+</html>

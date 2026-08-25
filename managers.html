@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Managers - Password Security Hub</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- PWA Manifest and Theme Color -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Header and Navigation -->
+        <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+            <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://placehold.co/128x128/4F46E5/FFFFFF?text=PSH" alt="Password Security Hub Logo">
+                        <span class="text-xl font-bold text-white ml-3">PasswordSecurityHub</span>
+                    </a>
+                    <div class="hidden lg:flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Home</a>
+                        <a href="generator.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Generator</a>
+                        <a href="passkeys.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Passkeys</a>
+                        <a href="2fa.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">2FA Methods</a>
+                        <a href="managers.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium text-gray-300">Password Managers</a>
+                        <a href="support.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Support Us</a>
+                        <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Contact</a>
+                    </div>
+                    <div class="lg:hidden">
+                        <button id="hamburger-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                            <span class="sr-only">Open main menu</span>
+                            <svg id="hamburger-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                            <svg id="hamburger-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div id="mobile-menu" class="lg:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Home</a>
+                    <a href="generator.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Generator</a>
+                    <a href="passkeys.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Passkeys</a>
+                    <a href="2fa.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">2FA Methods</a>
+                    <a href="managers.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium text-gray-300">Password Managers</a>
+                    <a href="support.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Support Us</a>
+                    <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Contact</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="space-y-6">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h2 class="text-3xl font-bold mb-4 text-indigo-400">Choosing a Password Manager</h2>
+                        <p class="text-gray-300">A password manager is the single most effective tool for improving your online security. It generates, stores, and fills strong, unique passwords for every site you use.</p>
+                    </div>
+                    
+                    <!-- Bitwarden -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Bitwarden</h3>
+                        <p class="mb-4 text-sm text-gray-400">An open-source password manager praised for its security, transparency, and generous free plan.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Open-source and independently audited</li><li>Excellent free version</li><li>Can be self-hosted</li><li>Strong security record with no major breaches</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Interface is more functional than flashy</li><li>Some advanced features require premium</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="#" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+                    
+                    <!-- 1Password -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">1Password</h3>
+                        <p class="mb-4 text-sm text-gray-400">A user-friendly, feature-rich password manager with a strong focus on design and family sharing.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Beautiful and intuitive interface</li><li>Excellent family and team plans</li><li>"Travel Mode" feature for security</li><li>Strong security record with no known breaches of user vault data</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>No free version (subscription only)</li><li>Not open-source</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://1password.com" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- Dashlane -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Dashlane</h3>
+                        <p class="mb-4 text-sm text-gray-400">A popular password manager known for its simple interface and additional security features like a built-in VPN.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>User-friendly and easy to navigate</li><li>Includes extra features (VPN, identity monitoring)</li><li>Strong automatic password changer feature</li><li>Good security record with no major breaches</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>More expensive than many competitors</li><li>Free version is limited to one device</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://www.dashlane.com" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- NordPass -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">NordPass</h3>
+                        <p class="mb-4 text-sm text-gray-400">A password manager from the team behind NordVPN, focusing on simplicity and modern encryption standards.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Clean, minimalist interface</li><li>Uses modern XChaCha20 encryption</li><li>Part of the trusted Nord security ecosystem</li><li>Strong security record with no known breaches</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Fewer advanced features than competitors</li><li>Free version has some limitations</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://nordpass.com" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- LastPass -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">LastPass</h3>
+                        <p class="mb-4 text-sm text-gray-400">One of the most well-known password managers, though its reputation has been impacted by security incidents.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Easy-to-use interface</li><li>Comprehensive feature set</li><li>Good for families and businesses</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Experienced a major security incident in late 2022 where attackers accessed backups of customer vault data. <a href="https://blog.lastpass.com/2022/12/notice-of-recent-security-incident/" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">(Source)</a></li><li>Free version is very limited</li><li>Not open-source</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://www.lastpass.com" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- Proton Pass -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Proton Pass</h3>
+                        <p class="mb-4 text-sm text-gray-400">A privacy-focused, open-source password manager from the creators of Proton Mail and Proton VPN.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Strong focus on privacy and encryption</li><li>Open-source and audited</li><li>Includes email aliases to hide your real email</li><li>No known security breaches</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Newer, so less feature-rich than rivals</li><li>Free version has limitations</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://proton.me/pass" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- RoboForm -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">RoboForm</h3>
+                        <p class="mb-4 text-sm text-gray-400">One of the original password managers, known for its powerful form-filling capabilities.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Excellent at filling complex, multi-page web forms</li><li>Supports multiple identities for form-filling</li><li>Strong security record</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Interface can feel dated compared to newer rivals</li><li>A browser extension vulnerability was found and patched in 2017. <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1295" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">(Source)</a></li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://www.roboform.com" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- Vaultwarden -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Vaultwarden (Self-Hosted)</h3>
+                        <p class="mb-4 text-sm text-gray-400">A lightweight, open-source implementation of the Bitwarden server API, perfect for self-hosting your passwords.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Complete control over your data</li><li>Entirely free to use</li><li>Extremely resource-efficient</li><li>Compatible with all official Bitwarden apps</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Requires technical skill to set up and maintain</li><li>You are responsible for your own backups</li><li>Security is dependent on your own server configuration</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- KeePass -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">KeePass</h3>
+                        <p class="mb-4 text-sm text-gray-400">A free, open-source, and offline password manager that gives you complete control over your data.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Completely free and open-source</li><li>Database is stored locally, not in the cloud</li><li>Highly customizable with plugins</li><li>Extremely secure if used correctly</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Requires manual syncing between devices</li><li>Steeper learning curve; less user-friendly</li><li>A vulnerability (CVE-2023-32784) that could expose the master password from memory was discovered and patched in June 2023. <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-32784" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">(Source)</a></li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://keepass.info" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+
+                    <!-- KeePassXC -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">KeePassXC</h3>
+                        <p class="mb-4 text-sm text-gray-400">A popular, modern, and cross-platform community fork of KeePass that works out of the box on Windows, macOS, and Linux.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div><h4 class="font-bold text-green-400 mb-1">Pros</h4><ul class="list-disc list-inside space-y-1"><li>Free, open-source, and actively developed</li><li>More modern interface than KeePass</li><li>Excellent cross-platform support</li><li>Considered very secure with no major breaches</li></ul></div>
+                            <div><h4 class="font-bold text-red-400 mb-1">Cons</h4><ul class="list-disc list-inside space-y-1"><li>Like KeePass, it's an offline manager</li><li>Requires you to manually sync your database file between devices (e.g., via Dropbox, Google Drive)</li></ul></div>
+                        </div>
+                        <div class="mt-4 text-sm space-x-4"><a href="https://keepassxc.org" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:underline">Official Link</a></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 border-t border-gray-700 py-8">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex justify-center space-x-6 mb-4 text-sm text-gray-400">
+                    <a href="tos.html" class="hover:text-white">Terms of Service</a>
+                </div>
+                <p class="text-xs text-gray-500 max-w-2xl mx-auto mb-2">Data & Privacy Notice: This website does not deploy marketing scripts, tracking pixels, or advertising cookies of any kind. We utilize Cloudflare solely for anonymized traffic metrics and bot-network defense, ensuring no personal identifiable information or browsing histories are collected or stored on this domain.</p>
+                <p class="text-xs text-gray-500">&copy; 2026 Password Security Hub. Deterministically Secure.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="shared.js"></script>
+</body>
+</html>

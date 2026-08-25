@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deterministic Password Generator - Password Security Hub</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+    <script src="crypto-js.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-gray-200">
+    <div id="app" class="min-h-screen flex flex-col">
+        <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+            <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://placehold.co/128x128/4F46E5/FFFFFF?text=PSH" alt="Password Security Hub Logo">
+                        <span class="text-xl font-bold text-white ml-3">PasswordSecurityHub</span>
+                    </a>
+                    <div class="hidden lg:flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Home</a>
+                        <a href="generator.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium text-gray-300">Generator</a>
+                        <a href="passkeys.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Passkeys</a>
+                        <a href="2fa.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">2FA Methods</a>
+                        <a href="managers.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Password Managers</a>
+                        <a href="support.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Support Us</a>
+                        <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Contact</a>
+                    </div>
+                    <div class="lg:hidden">
+                        <button id="hamburger-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                            <span class="sr-only">Open main menu</span>
+                            <svg id="hamburger-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                            <svg id="hamburger-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div id="mobile-menu" class="lg:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Home</a>
+                    <a href="generator.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium text-gray-300">Generator</a>
+                    <a href="passkeys.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Passkeys</a>
+                    <a href="2fa.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">2FA Methods</a>
+                    <a href="managers.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Password Managers</a>
+                    <a href="support.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Support Us</a>
+                    <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Contact</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
+                <!-- Generator Column -->
+                <div class="lg:col-span-3 bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl border border-gray-700">
+                    <h2 class="text-3xl font-bold mb-2 text-indigo-400">Deterministic Password Generator</h2>
+                    <p class="text-sm text-gray-400 mb-6 font-medium">No data is ever stored.</p>
+                    
+                    <!-- One-Time Local Storage Consent Pop-up Banner -->
+                    <div id="terms-consent-banner" class="hidden mb-6 p-5 bg-indigo-950/60 border border-indigo-500/50 rounded-lg space-y-4">
+                        <p class="text-sm text-gray-200">
+                            Before generating your first password, please confirm you have read and agree to our 
+                            <a href="tos.html" class="text-indigo-400 underline font-semibold hover:text-indigo-300">Terms of Service</a>.
+                        </p>
+                        <div class="flex justify-end">
+                            <button id="btn-agree-terms" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-6 rounded text-sm transition-all shadow-md transform hover:scale-102">
+                                I Agree
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="master-password" class="block text-sm font-medium mb-1 text-gray-300">Remembered Password</label>
+                        <div class="relative">
+                            <input type="password" id="master-password" class="w-full bg-gray-900 border border-gray-700 rounded-md p-3 text-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pr-36 outline-none text-white">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-2">
+                                <button id="toggle-password-visibility" title="Show/Hide Password" class="flex items-center p-2 text-gray-400 hover:text-white transition-colors">
+                                    <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                    <svg id="eye-off-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.05 10.05 0 01-4.125 5.231m-1.423-1.423L12 12.011" /></svg>
+                                </button>
+                                <button id="randomize-password" title="Generate Random Remembered Password" class="flex items-center p-2 text-gray-400 hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                                </button>
+                                <button id="toggle-keyboard" title="Toggle Virtual Keyboard" class="flex items-center p-2 text-gray-400 hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="virtual-keyboard" class="virtual-keyboard hidden grid grid-cols-10 gap-1 bg-gray-800 p-4 rounded-lg border border-gray-700 mb-4"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                        <div>
+                            <label for="encryption-1" class="block text-sm font-medium mb-1 text-gray-300">Encryption Layer 1</label>
+                            <select id="encryption-1" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition outline-none">
+                                <option value="sha256">SHA-256</option>
+                                <option value="md5">MD5</option>
+                                <option value="custom1">Custom Algorithm 1</option>
+                                <option value="custom2">Custom Algorithm 2</option>
+                                <option value="custom3">Custom Algorithm 3</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="encryption-2" class="block text-sm font-medium mb-1 text-gray-300">Encryption Layer 2</label>
+                            <select id="encryption-2" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition outline-none">
+                                <option value="skip">Skip This Layer</option>
+                                <option value="sha256">SHA-256</option>
+                                <option value="md5">MD5</option>
+                                <option value="customA">Custom Algorithm A</option>
+                                <option value="customB">Custom Algorithm B</option>
+                                <option value="customC">Custom Algorithm C</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded-lg mb-6 border border-gray-700">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label for="password-length" class="block text-sm font-medium mb-2">Password Length: <span id="length-value" class="font-bold text-indigo-400">16</span></label>
+                                <input type="range" id="password-length" min="4" max="128" value="16" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                            </div>
+                            <div class="flex items-center"><input id="include-lowercase" type="checkbox" checked class="h-5 w-5 rounded bg-gray-700 border-gray-600 text-indigo-600 focus:ring-indigo-500"><label for="include-lowercase" class="ml-2 text-sm">Lowercase (a-z)</label></div>
+                            <div class="flex items-center"><input id="include-uppercase" type="checkbox" checked class="h-5 w-5 rounded bg-gray-700 border-gray-600 text-indigo-600 focus:ring-indigo-500"><label for="include-uppercase" class="ml-2 text-sm">Uppercase (A-Z)</label></div>
+                            <div class="flex items-center"><input id="include-numbers" type="checkbox" checked class="h-5 w-5 rounded bg-gray-700 border-gray-600 text-indigo-600 focus:ring-indigo-500"><label for="include-numbers" class="ml-2 text-sm">Numbers (0-9)</label></div>
+                            <div class="flex items-center"><input id="include-special" type="checkbox" checked class="h-5 w-5 rounded bg-gray-700 border-gray-600 text-indigo-600 focus:ring-indigo-500"><label for="include-special" class="ml-2 text-sm">Special Characters</label></div>
+                        </div>
+                        <div id="special-chars-container" class="mt-4">
+                            <label for="special-chars-input" class="block text-sm font-medium mb-1">Allowed Special Characters</label>
+                            <input type="text" id="special-chars-input" value="!@#$%^&*()_+-=[]{}|;:,.<>/?" class="w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-sm font-mono focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition outline-none text-white">
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <label for="output-password" class="block text-sm font-medium mb-1 text-gray-300">Generated Password</label>
+                        <input id="output-password" type="text" readonly placeholder="Please agree to the Terms above" class="w-full bg-black border border-gray-700 rounded-md p-4 text-lg font-mono pr-28 truncate text-gray-500 italic outline-none">
+                        <button id="copy-button" class="absolute inset-y-0 right-0 flex items-center px-4 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500 transition-colors">Copy</button>
+                    </div>
+                    <div id="copy-feedback" class="text-center text-green-400 h-4 mt-2 text-sm font-semibold"></div>
+                </div>
+                
+                <div class="lg:col-span-2 bg-gray-800/50 p-6 rounded-lg border border-gray-700 h-fit space-y-6">
+                    <h3 class="text-2xl font-bold text-indigo-400 border-b border-gray-700 pb-2">How It Works</h3>
+                    <div class="space-y-4 text-gray-300">
+                        <div>
+                            <h4 class="font-semibold text-lg text-white">Step 1: Master Password</h4>
+                            <p class="text-sm">This is your secret key. It can be a memorable phrase or a random string. This is the only thing you need to remember to recreate your password later. This entire site can be used offline to guarantee privacy.</p>
+                            <div class="mt-3 bg-gray-900/70 p-3 rounded-lg text-sm space-y-2">
+                                <p class="font-semibold text-gray-400">Use the icons for help:</p>
+                                <div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg> <span>Toggle password visibility.</span></div>
+                                <div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> <span>Generate a strong random password.</span></div>
+                                <div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> <span>Use the virtual keyboard to protect against keyloggers.</span></div>
+                            </div>
+                        </div>
+                        <div><h4 class="font-semibold text-lg text-white">Step 2: Encryption Layers</h4><p class="text-sm">Your remembered password is first transformed by Layer 1. The result of that is then transformed by Layer 2. This creates a complex, unique "seed" string. Using both layers is recommended for maximum security.</p></div>
+                        <div><h4 class="font-semibold text-lg text-white">Step 3: Customization</h4><p class="text-sm">Use the slider to set the final password length. Then, select which character types (lowercase, uppercase, numbers, special) you want in the final password. You can even customize the list of allowed special characters.</p></div>
+                         <div><h4 class="font-semibold text-lg text-white">Step 4: Copy & Use</h4><p class="text-sm">Click the "Copy" button to instantly copy the generated password to your clipboard, ready to be used as your new, secure password.</p></div>
+                        
+                        <div class="p-4 bg-green-900/50 rounded-lg border border-green-700">
+                            <h4 class="font-semibold text-lg text-green-300">Your Privacy is Our Priority</h4>
+                            <p class="text-sm">This Generator page is—and always will be—**100% ad-free and tracker-free**. All calculations are performed on your device. Nothing is ever sent to a server.</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-900 rounded-lg">
+                            <h4 class="font-semibold text-lg text-indigo-300">The Key Principle</h4>
+                            <p class="text-sm">This process is <strong class="text-white">deterministic</strong>. To get the same password again, you just need to re-enter the <strong class="text-white">exact same remembered password</strong> and select the <strong class="text-white">exact same options</strong>. Nothing is ever saved, ensuring your privacy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 border-t border-gray-700 py-8">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex justify-center space-x-6 mb-4 text-sm text-gray-400">
+                    <a href="tos.html" class="hover:text-white">Terms of Service</a>
+                </div>
+                <p class="text-xs text-gray-500 max-w-2xl mx-auto mb-2">Data & Privacy Notice: This website does not deploy marketing scripts, tracking pixels, or advertising cookies of any kind. We utilize Cloudflare solely for anonymized traffic metrics and bot-network defense, ensuring no personal identifiable information or browsing histories are collected or stored on this domain.</p>
+                <p class="text-xs text-gray-500">&copy; 2026 Password Security Hub. Deterministically Secure.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Random Password Modal -->
+    <div id="random-pw-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center hidden z-50 transition-opacity duration-300 px-4">
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 w-full max-w-sm space-y-6 border border-gray-700">
+            <h3 class="text-xl font-semibold text-white">Generate Master Password</h3>
+            
+            <div class="flex space-x-4 border-b border-gray-700 pb-4">
+                <label class="flex items-center text-sm text-gray-300 cursor-pointer">
+                    <input type="radio" name="pw-type" value="chars" class="mr-2 h-4 w-4 text-indigo-600 bg-gray-700 border-gray-600 focus:ring-indigo-500" checked> Random Characters
+                </label>
+                <label class="flex items-center text-sm text-gray-300 cursor-pointer">
+                    <input type="radio" name="pw-type" value="words" class="mr-2 h-4 w-4 text-indigo-600 bg-gray-700 border-gray-600 focus:ring-indigo-500"> Memorable Passphrase
+                </label>
+            </div>
+
+            <div id="length-container">
+                <label for="random-pw-length" class="block text-sm font-medium mb-1 text-gray-300">Length (16-64 characters)</label>
+                <input type="number" id="random-pw-length" value="24" min="16" max="64" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2 text-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition outline-none text-white">
+            </div>
+
+            <div id="word-count-container" class="hidden">
+                <label for="random-pw-words" class="block text-sm font-medium mb-1 text-gray-300">Word Count (3-12 words)</label>
+                <input type="number" id="random-pw-words" value="5" min="3" max="12" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2 text-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition outline-none text-white">
+            </div>
+
+            <div class="flex justify-end space-x-4 pt-2">
+                <button id="cancel-random-pw" class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-md font-semibold transition-colors text-white">Cancel</button>
+                <button id="confirm-random-pw" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md font-semibold text-white transition-colors">Generate</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="generator.js"></script>
+</body>
+</html>

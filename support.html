@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us - Password Security Hub</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-gray-200">
+    <div id="app" class="min-h-screen flex flex-col">
+        <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+            <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://placehold.co/128x128/4F46E5/FFFFFF?text=PSH" alt="Password Security Hub Logo">
+                        <span class="text-xl font-bold text-white ml-3">PasswordSecurityHub</span>
+                    </a>
+                    <div class="hidden lg:flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Home</a>
+                        <a href="generator.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Generator</a>
+                        <a href="news.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">News</a>
+                        <a href="passkeys.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Passkeys</a>
+                        <a href="2fa.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">2FA Methods</a>
+                        <a href="managers.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Password Managers</a>
+                        <a href="support.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium text-gray-300">Support Us</a>
+                        <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Contact</a>
+                    </div>
+                    <div class="lg:hidden">
+                        <button id="hamburger-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                            <span class="sr-only">Open main menu</span>
+                            <svg id="hamburger-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                            <svg id="hamburger-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div id="mobile-menu" class="lg:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Home</a>
+                    <a href="generator.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Generator</a>
+                    <a href="news.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">News</a>
+                    <a href="passkeys.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Passkeys</a>
+                    <a href="2fa.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">2FA Methods</a>
+                    <a href="managers.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Password Managers</a>
+                    <a href="support.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium text-gray-300">Support Us</a>
+                    <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Contact</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-xl text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-indigo-400">Support Our Work</h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        We believe in a privacy-first web. This main website uses <strong class="text-white">absolutely zero tracking cookies, marketing scripts, or corporate analytics</strong>.
+                    </p>
+                    <p class="text-gray-400 mb-8">
+                        Your support allows us to cover server costs, dedicate development time to new features, and keep the Hub an independent, user-focused resource. If you find our tools valuable, please consider contributing.
+                    </p>
+
+                    <!-- CTA to Support Hub -->
+                    <div class="bg-gray-900/50 p-8 rounded-lg mb-8 border border-gray-700">
+                        <div class="text-5xl mb-4">💚</div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Affiliate Tools & Donation Hub</h3>
+                        <p class="text-gray-400 mb-6 max-w-lg mx-auto">
+                            Visit our dedicated support hub to explore affiliate partner links, make donations via PayPal, Patreon, BitPay, or cryptocurrency, and shop our security-themed merchandise.
+                        </p>
+                        <a href="supportus/index.html" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-lg transition-colors text-lg">
+                            Visit Support Hub &rarr;
+                        </a>
+                        <div class="mt-6 bg-gray-800 border border-gray-600 rounded-lg p-4 text-left max-w-lg mx-auto">
+                            <p class="text-xs text-gray-400">
+                                <strong class="text-gray-300">🔒 Privacy Note:</strong> Our support hub lives on a separate subdomain that utilizes standard third-party tracking cookies to credit affiliate purchases and securely process PayPal donations. This is separate from the tracking-free experience on this main website.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="supportus/affiliates.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
+                            <div class="text-2xl mb-2">🤝</div>
+                            <h4 class="font-semibold text-white text-sm group-hover:text-indigo-400 transition-colors">Affiliate Partners</h4>
+                            <p class="text-xs text-gray-500 mt-1">Security tools via Awin & Amazon</p>
+                        </a>
+                        <a href="supportus/donate.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
+                            <div class="text-2xl mb-2">💝</div>
+                            <h4 class="font-semibold text-white text-sm group-hover:text-indigo-400 transition-colors">Donate</h4>
+                            <p class="text-xs text-gray-500 mt-1">PayPal, Patreon, BitPay & crypto</p>
+                        </a>
+                        <a href="supportus/shop.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
+                            <div class="text-2xl mb-2">🛒</div>
+                            <h4 class="font-semibold text-white text-sm group-hover:text-indigo-400 transition-colors">Shop Merch</h4>
+                            <p class="text-xs text-gray-500 mt-1">Redbubble & Etsy stores</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 border-t border-gray-700 py-8">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex justify-center space-x-6 mb-4 text-sm text-gray-400">
+                    <a href="tos.html" class="hover:text-white">Terms of Service</a>
+                </div>
+                <p class="text-xs text-gray-500 max-w-2xl mx-auto mb-2">Data &amp; Privacy Notice: This website does not deploy marketing scripts, tracking pixels, or advertising cookies of any kind. We utilize Cloudflare solely for anonymized traffic metrics and bot-network defense, ensuring no personal identifiable information or browsing histories are collected or stored on this domain.</p>
+                <p class="text-xs text-gray-500">&copy; 2026 Password Security Hub. Deterministically Secure.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="shared.js"></script>
+</body>
+</html>

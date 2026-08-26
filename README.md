@@ -5,8 +5,9 @@ One password, pick what you want on the encryption method or leave it default. C
 
 This site doesn't need anything to be used offline. Just download all the files and you are good to go (images aren't fully needed for it to run properly).
 
-## 📄 License
+## License
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
+## AI Disclosure
 I did use AI to help make the site (I'm not the best UI designer), I did verify all the code and made sure everything is working and that the AI didn't put anything to phone home. If anyone has any suggestions for the site let me know. 

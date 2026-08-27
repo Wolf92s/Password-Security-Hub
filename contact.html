@@ -21,60 +21,79 @@
                         <img class="h-8 w-auto" src="https://placehold.co/128x128/4F46E5/FFFFFF?text=PSH" alt="Password Security Hub Logo">
                         <span class="text-xl font-bold text-white ml-3">PasswordSecurityHub</span>
                     </a>
+                    <!-- Desktop Menu -->
                     <div class="hidden lg:flex items-baseline space-x-4">
-                        <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Home</a>
+                        <a href="index.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium text-gray-300">Home</a>
                         <a href="generator.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Generator</a>
                         <a href="passkeys.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Passkeys</a>
                         <a href="2fa.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">2FA Methods</a>
                         <a href="managers.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Password Managers</a>
                         <a href="support.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Support Us</a>
-                        <a href="contact.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium text-gray-300">Contact</a>
+                        <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300">Contact</a>
                     </div>
+                    <!-- Hamburger Button -->
                     <div class="lg:hidden">
                         <button id="hamburger-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span class="sr-only">Open main menu</span>
-                            <svg id="hamburger-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                            <svg id="hamburger-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                            <svg id="hamburger-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg id="hamburger-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
                         </button>
                     </div>
                 </div>
             </nav>
+            <!-- Mobile menu -->
             <div id="mobile-menu" class="lg:hidden hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Home</a>
-                    <a href="generator.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Generator</a>
-                    <a href="passkeys.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Passkeys</a>
-                    <a href="2fa.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">2FA Methods</a>
-                    <a href="managers.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Password Managers</a>
-                    <a href="support.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Support Us</a>
-                    <a href="contact.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium text-gray-300">Contact</a>
+                    <a href="/index" class="nav-link active block px-3 py-2 rounded-md text-base font-medium text-gray-300">Home</a>
+                    <a href="/generator" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Generator</a>
+                    <a href="/passkeys" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Passkeys</a>
+                    <a href="/2fa" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">2FA Methods</a>
+                    <a href="/managers" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Password Managers</a>
+                    <a href="/support" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Support Us</a>
+                    <a href="/contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300">Contact</a>
                 </div>
             </div>
         </header>
 
         <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="max-w-xl mx-auto">
+				<div class="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700 space-y-6 text-center">
+                    <h2 class="text-3xl font-bold text-indigo-400">Github</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Check out our Github to verify the code yourself. Word of caution for privacy reason this is leaving the site to Github.
+                    </p>
+					<p class="leading-relaxed">
+						<a href="https://github.com/Wolf92s/Password-Security-Hub">https://github.com/Wolf92s/Password-Security-Hub</a>
+					</p>
+                    <a href="generator.html" class="inline-block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg text-xs transition-colors">
+                        Return to Generator
+                    </a>
+                </div>
                 <div class="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700 space-y-6 text-center">
                     <h2 class="text-3xl font-bold text-indigo-400">Get In Touch</h2>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        Whether you're looking to run an ethical tracking-free advertisement banner, check out custom platform merchandise options, report a bug, or audit our open-source generation architecture, feel free to contact us.
+                        Whether you're looking to report a bug, or have any questions, feel free to contact us.
                     </p>
                     <div class="bg-gray-950 p-4 rounded-lg border border-gray-700/50 font-mono text-xs text-indigo-300 selection:bg-indigo-500/30">
                         <span class="text-gray-500 block mb-1 uppercase text-[10px] tracking-wider font-sans">Primary Support Terminal</span>
                         <span class="text-sm font-semibold text-white">support@passwordsecurityhub.com</span>
                     </div>
                     <p class="text-[11px] text-gray-500 italic">
-                        Response times typically average under 24 hours depending on patch deployment sequences.
+                        Response times typically average under 48-72 hours.
                     </p>
                 </div>
 				<br />
                 <div class="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700 space-y-6 text-center">
-                    <h2 class="text-3xl font-bold text-indigo-400">Github</h2>
+                    <h2 class="text-3xl font-bold text-indigo-400">Reddit</h2>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        Check out our Github to verify the code yourself. 
+                        I have setup a subreddit if you would rather ask questions or have conversations with others that are interested in Password Security. Word of caution for privacy reason this is leaving the site to reddit.
                     </p>
 					<p class="leading-relaxed">
-						<a href="https://github.com/Wolf92s/Password-Security-Hub">https://github.com/Wolf92s/Password-Security-Hub</a>
+						<a href="https://www.reddit.com/r/PasswordSecurityHub/">https://www.reddit.com/r/PasswordSecurityHub/</a>
 					</p>
                     <a href="generator.html" class="inline-block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg text-xs transition-colors">
                         Return to Generator

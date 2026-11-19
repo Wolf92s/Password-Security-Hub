@@ -11,6 +11,56 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <link rel="stylesheet" href="styles.css">
+	<script>
+	const wallets = {
+		"btc-segwit": {
+			title: "Bitcoin Address (P2SH-SegWit):",
+			address: "3JnWexi4UoyZrDQFyraCpJmUDMb2KrasWk",
+			note: 'Note: This is a Base58 / P2SH-SegWit address starting with a "3". It is 100% compatible with all legacy and modern Bitcoin wallets.'
+		},
+		"ltc-bech32": {
+			title: "Litecoin Address (Bech32 (Native SegWit)):",
+			address: "ltc1qq3j8sxzddn7wcxsfmxv6latnhsudxh67jvcnnx",
+			note: "Note: This is a Bech32 (Native SegWit) address. It is not compatible with legacy wallets."
+		},
+		"ltc-mweb": {
+			title: "Litecoin Address (Mweb):",
+			address: "ltcmweb1qqds4r2kznkk5vaqupapntcq28enytn65jmrtlh4efsvarvuz8tqj2q5pw6a995ghftzuvg3lqtqv3jd7q7vntxglf28tmtc4mfjws9r7qcjvnkum",
+			note: "Note: This is a Mweb address. It is not compatible with legacy wallets and exchanges."
+		},
+		"ltc-legacy": {
+			title: "Litecoin Address (Mweb):",
+			address: "MRn89eXemyhGSFswHJuw8fCJLt3zfKRSJM",
+			note: "Note: This is a legacy address. It is compatible with legacy wallets but will cost higher transactions fees."
+		},
+		"doge": {
+			title: "Dogecoin Address:",
+			address: "DAtZt34vs3GdVx2BzmGbzkDAqjqPJUcrpA",
+			note: ""
+		}
+	};
+
+	const buttons = document.querySelectorAll(".wallet-btn");
+	const panel = document.getElementById("donation-panel");
+	const titleEl = document.getElementById("donation-title");
+	const codeEl = document.getElementById("donation-code");
+	const noteEl = document.getElementById("donation-note");
+
+	buttons.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			const data = wallets[btn.dataset.wallet];
+			if (!data) return;
+
+			titleEl.textContent = data.title;
+			codeEl.textContent = data.address;
+			noteEl.textContent = data.note;
+			panel.classList.remove("hidden");
+
+			buttons.forEach((b) => b.classList.remove("ring-2", "ring-white"));
+			btn.classList.add("ring-2", "ring-white");
+		});
+	});
+	</script>
 </head>
 <body class="bg-gray-900 text-gray-200">
     <div id="app" class="min-h-screen flex flex-col">
@@ -76,7 +126,7 @@
                         <p class="text-gray-400 mb-6 max-w-lg mx-auto">
                             Visit our dedicated support hub to explore affiliate partner links, make donations via PayPal, Patreon, BitPay, or cryptocurrency, and shop our security-themed merchandise.
                         </p>
-                        <a href="supportus.PasswordSecurityHub.com" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-lg transition-colors text-lg">
+                        <a href="https://supportus.PasswordSecurityHub.com" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-lg transition-colors text-lg">
                             Visit Support Hub &rarr;
                         </a>
                         <div class="mt-6 bg-gray-800 border border-gray-600 rounded-lg p-4 text-left max-w-lg mx-auto">
@@ -88,17 +138,17 @@
 
                     <!-- Quick Links Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <a href="supportus.PasswordSecurityHub.com/affiliates.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
+                        <a href="https://supportus.PasswordSecurityHub.com/affiliates.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
                             <div class="text-2xl mb-2">🤝</div>
                             <h4 class="font-semibold text-white text-sm group-hover:text-indigo-400 transition-colors">Affiliate Partners</h4>
                             <p class="text-xs text-gray-500 mt-1">Security tools via Awin & Amazon</p>
                         </a>
-                        <a href="supportus.PasswordSecurityHub.com/donate.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
+                        <a href="https://supportus.PasswordSecurityHub.com/donate.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
                             <div class="text-2xl mb-2">💝</div>
                             <h4 class="font-semibold text-white text-sm group-hover:text-indigo-400 transition-colors">Donate</h4>
                             <p class="text-xs text-gray-500 mt-1">PayPal, Patreon, BitPay & crypto</p>
                         </a>
-                        <a href="supportus.PasswordSecurityHub.com/shop.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
+                        <a href="https://supportus.PasswordSecurityHub.com/shop.html" class="bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:border-indigo-500 transition-colors group">
                             <div class="text-2xl mb-2">🛒</div>
                             <h4 class="font-semibold text-white text-sm group-hover:text-indigo-400 transition-colors">Shop Merch</h4>
                             <p class="text-xs text-gray-500 mt-1">Redbubble & Etsy stores</p>
@@ -106,17 +156,43 @@
                     </div>
 					<br />
 					<div class="bg-gray-900/50 p-8 rounded-lg mb-8 border border-gray-700">
-						<h5 class="text-2xl font-bold text-white mb-3">Crypto donations</h3>
+						<h5 class="text-2xl font-bold text-white mb-3">Crypto donations</h5>
 						<p class="text-gray-400 mb-6 max-w-lg mx-auto">
                             If you prefer to not go to our Support Us site. Here is our crypto address:
 							<div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #000000;">
-								<strong>Bitcoin Address (P2SH-SegWit):</strong><br>
+								<strong>Bitcoin Address (P2SH-SegWit):</strong><br />
 								<code style="font-size: 1.1em; word-break: break-all;">3JnWexi4UoyZrDQFyraCpJmUDMb2KrasWk</code>
 							</div>
 							
 							<p style="font-size: 0.85em; color: #666; margin-top: 10px;">
 								<em>Note: This is a Base58 / P2SH-SegWit address starting with a "3". It is 100% compatible with all legacy and modern Bitcoin wallets.</em>
 							</p>
+							<br />
+							<br />
+							<div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #000000;">
+								<strong>Litecoin Address (Bech32 (Native SegWit)):</strong><br />
+								<code style="font-size: 1.1em; word-break: break-all;">ltc1qq3j8sxzddn7wcxsfmxv6latnhsudxh67jvcnnx</code>
+							</div>
+							
+							<p style="font-size: 0.85em; color: #666; margin-top: 10px;">
+								<em>Note: This is a Bech32 (Native SegWit) address. It is not compatible with legacy wallets.</em>
+							</p>
+							<br />
+							<br />
+							<div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #000000;">
+								<strong>Litecoin Address (Mweb):</strong><br />
+								<code style="font-size: 1.1em; word-break: break-all;">ltcmweb1qqds4r2kznkk5vaqupapntcq28enytn65jmrtlh4efsvarvuz8tqj2q5pw6a995ghftzuvg3lqtqv3jd7q7vntxglf28tmtc4mfjws9r7qcjvnkum</code>
+							</div>
+							
+							<p style="font-size: 0.85em; color: #666; margin-top: 10px;">
+								<em>Note: This is a Mweb address. It is not compatible with legacy wallets and exchanges.</em>
+							</p>
+							<br />
+							<br />
+							<div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #000000;">
+								<strong>Dogecoin Address:</strong><br />
+								<code style="font-size: 1.1em; word-break: break-all;">DAtZt34vs3GdVx2BzmGbzkDAqjqPJUcrpA</code>
+							</div>
                         </p>
 					</div>
                 </div>
